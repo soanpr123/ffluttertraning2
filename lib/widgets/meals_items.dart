@@ -9,6 +9,7 @@ class MealItem extends StatelessWidget {
   final int duaration;
   final Complexity complexity;
   final Affordability affordability;
+
   String get complexityText {
     switch (complexity) {
       case Complexity.Simple:
@@ -47,9 +48,14 @@ class MealItem extends StatelessWidget {
       this.imageURL,
       this.duaration,
       this.complexity,
-      this.affordability});
+      this.affordability,});
   void selectMeal(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed(MailDetailScreen.routerName,arguments: id);
+    Navigator.of(ctx).pushNamed(MailDetailScreen.routerName,arguments: id).then((result){
+   if(result!=null){
+//     removeItem(result);
+   }
+
+    });
 
   }
   @override

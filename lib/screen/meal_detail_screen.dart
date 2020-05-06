@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 
 class MailDetailScreen extends StatelessWidget {
   static const routerName = '/meal-detail';
+  final Function toggleFavorite;
+  final Function isFavorit;
+  MailDetailScreen(this.toggleFavorite, this.isFavorit);
   Widget buildSectionTitle(BuildContext context, String text) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -75,6 +78,10 @@ class MailDetailScreen extends StatelessWidget {
             ))
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(isFavorit(mealID) ? Icons.star : Icons.star_border),
+        onPressed: ()=>toggleFavorite(mealID),
       ),
     );
   }
